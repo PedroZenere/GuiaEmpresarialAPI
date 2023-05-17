@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pedro Zenere\\OneDrive\\Documentos\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj": {}
+    "C:\\Users\\pedri\\Documents\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pedro Zenere\\OneDrive\\Documentos\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj": {
+    "C:\\Users\\pedri\\Documents\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pedro Zenere\\OneDrive\\Documentos\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj",
+        "projectUniqueName": "C:\\Users\\pedri\\Documents\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj",
         "projectName": "GuiaEmpresarialAPI",
-        "projectPath": "C:\\Users\\Pedro Zenere\\OneDrive\\Documentos\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj",
-        "packagesPath": "C:\\Users\\Pedro Zenere\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pedro Zenere\\OneDrive\\Documentos\\projects\\GuiaEmpresarialAPI\\obj\\",
+        "projectPath": "C:\\Users\\pedri\\Documents\\projects\\GuiaEmpresarialAPI\\GuiaEmpresarialAPI.csproj",
+        "packagesPath": "C:\\Users\\pedri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pedri\\Documents\\projects\\GuiaEmpresarialAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Pedro Zenere\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pedri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,7 +51,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -63,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
