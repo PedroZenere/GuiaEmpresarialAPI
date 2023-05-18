@@ -27,11 +27,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiaEmpresarialAPI.Server", "src\GuiaEmpresarialAPI.Server\GuiaEmpresarialAPI.Server.csproj", "{6BF7FCE5-671E-450E-8089-A5998B2CD578}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuiaEmpresarialAPI.Server", "src\GuiaEmpresarialAPI.Server\GuiaEmpresarialAPI.Server.csproj", "{6BF7FCE5-671E-450E-8089-A5998B2CD578}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiaEmpresarialAPI.Data", "src\GuiaEmpresarialAPI.Data\GuiaEmpresarialAPI.Data.csproj", "{FF0E5EB1-6FCF-4FDF-8CAA-ADF863EEE640}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuiaEmpresarialAPI.Data", "src\GuiaEmpresarialAPI.Data\GuiaEmpresarialAPI.Data.csproj", "{FF0E5EB1-6FCF-4FDF-8CAA-ADF863EEE640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuiaEmpresarialAPI.Shared", "src\GuiaEmpresarialAPI.Shared\GuiaEmpresarialAPI.Shared.csproj", "{0AF9347B-41DF-4D0E-898A-A7575D7E674E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuiaEmpresarialAPI.Shared", "src\GuiaEmpresarialAPI.Shared\GuiaEmpresarialAPI.Shared.csproj", "{0AF9347B-41DF-4D0E-898A-A7575D7E674E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6C811022-86DF-46C2-9098-FBABB4C896AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{0AF9347B-41DF-4D0E-898A-A7575D7E674E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AF9347B-41DF-4D0E-898A-A7575D7E674E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF9347B-41DF-4D0E-898A-A7575D7E674E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C811022-86DF-46C2-9098-FBABB4C896AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C811022-86DF-46C2-9098-FBABB4C896AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C811022-86DF-46C2-9098-FBABB4C896AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C811022-86DF-46C2-9098-FBABB4C896AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
