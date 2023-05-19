@@ -22,6 +22,7 @@ namespace GuiaEmpresarialAPI.Data.Services
                     sqlOptions => sqlOptions.MigrationsHistoryTable("__MigrationHistory")
                 );
 
+                // Adicionando logs no console
                 options
                     .UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll)
                     .EnableSensitiveDataLogging()
