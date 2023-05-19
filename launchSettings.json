@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeProfile": {
+        "includes": [
+          "app",
+          "db"
+        ],
+        "serviceActions": {
+          "guiaempresarialapi.server": "StartWithoutDebugging"
+        }
+      },
+      "commandVersion": "1.0"
+    }
+  }
+}
