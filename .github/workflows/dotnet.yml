@@ -21,6 +21,6 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
-      run: dotnet restore .\src\GuiaEmpresarialAPI.Server\
+      run: dotnet restore ./src/GuiaEmpresarialAPI.Server/
     - name: Build
-      run: dotnet build .\src\GuiaEmpresarialAPI.Server\
+      run: dotnet build ./src/GuiaEmpresarialAPI.Server/
