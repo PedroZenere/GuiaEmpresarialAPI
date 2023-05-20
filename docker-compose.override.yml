@@ -4,7 +4,7 @@ services:
   guiaempresarialapi.database:
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD={GUIAEMPRESARIALAPI_DB_PASSWORD}
+      - SA_PASSWORD=${GUIAEMPRESARIALAPI_DB_PASSWORD}
     ports:
       - 1434:1433
     networks:

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GuiaEmpresarialAPI.Domain.Categorias;
+using Microsoft.EntityFrameworkCore;
 
 namespace GuiaEmpresarialAPI.Data.Context
 {
     public partial class ApplicationContext
     {
-
-
+        public virtual DbSet<Categoria> Categorias { get; set; }
     }
 }
