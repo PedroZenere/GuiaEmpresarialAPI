@@ -5,6 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GuiaEmpresarialAPI.Data.Services;
+using System.Reflection;
+using FluentValidation.AspNetCore;
+using MediatR;
 
 namespace GuiaEmpresarialAPI.Server
 {
@@ -22,7 +25,20 @@ namespace GuiaEmpresarialAPI.Server
         {
             //Configurando SQLServer
             services.ConfigureMainDatabase(Configuration);
-            services.AddControllers();
+
+            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+            //services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+
+            //services.AddScoped<IMediator, Mediator>();
+            //var assembly1 = AppDomain.CurrentDomain.Load("GuiaEmpresarialAPI.Application");
+            //var assembly2 = AppDomain.CurrentDomain.Load("GuiaEmpresarialAPI.Shared");
+            //services.AddMediatR(assembly2, assembly1);
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddControllers()
+                     .AddFluentValidation(fvc =>
+                            fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GuiaEmpresarialAPI.Server", Version = "v1" });
