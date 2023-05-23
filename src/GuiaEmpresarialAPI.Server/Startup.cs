@@ -5,9 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GuiaEmpresarialAPI.Data.Services;
-using System.Reflection;
 using FluentValidation.AspNetCore;
 using MediatR;
+using GuiaEmpresarialAPI.Application.Core.Command;
+using GuiaEmpresarialAPI.Data.Interface;
+using GuiaEmpresarialAPI.Data.Context;
+using System.Reflection;
+using GuiaEmpresarialAPI.Server.Configurations;
 
 namespace GuiaEmpresarialAPI.Server
 {
@@ -26,18 +30,13 @@ namespace GuiaEmpresarialAPI.Server
             //Configurando SQLServer
             services.ConfigureMainDatabase(Configuration);
 
-            services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
-            //services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+            services.RegisterServicesConfiguration();
 
-            //services.AddScoped<IMediator, Mediator>();
-            //var assembly1 = AppDomain.CurrentDomain.Load("GuiaEmpresarialAPI.Application");
-            //var assembly2 = AppDomain.CurrentDomain.Load("GuiaEmpresarialAPI.Shared");
-            //services.AddMediatR(assembly2, assembly1);
-
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(CreateCommandHandlerBase<,,>).Assembly);
+            services.AddAutoMapper(typeof(CreateCommandHandlerBase<,,>).Assembly);
 
             services.AddControllers()
-                     .AddFluentValidation(fvc =>
+                    .AddFluentValidation(fvc =>
                             fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
             services.AddSwaggerGen(c =>
             {

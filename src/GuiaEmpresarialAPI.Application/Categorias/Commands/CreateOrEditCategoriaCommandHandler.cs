@@ -24,9 +24,9 @@ namespace GuiaEmpresarialAPI.Application.Categorias.Commands
         {
             var entity = _mapper.Map<Categoria>(request);
 
-            var response = !request.Id.HasValue ? await _appContext.Categorias.AddAsync(entity) : _appContext.Categorias.Update(entity);
-
-            return _mapper.Map<CategoriaViewModel>(response);
+            var response = !request.Id.HasValue ? await _appContext.Categorias.AddAsync(entity, cancellationToken) : _appContext.Categorias.Update(entity);
+            await _appContext.SaveChangesAsync(cancellationToken);
+            return _mapper.Map<CategoriaViewModel>(response.Entity);
         }
     }
 }
