@@ -1,5 +1,7 @@
 ﻿using GuiaEmpresarialAPI.Shared.Categorias.Commands;
+using GuiaEmpresarialAPI.Shared.Categorias.Queries;
 using GuiaEmpresarialAPI.Shared.Categorias.ViewModels;
+using GuiaEmpresarialAPI.Shared.Core.Utils.PagedList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -12,11 +14,16 @@ namespace GuiaEmpresarialAPI.Server.Controllers
         {
         }
 
+        [HttpGet]
+        public async Task<IPaginatedList<CategoriaViewModel>> BuscaCategoriaFiltros([FromQuery] GetCategoriaByFilterQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
         [HttpPost]
         public async Task<CategoriaViewModel> CriaCategoria([FromBody] CreateOrEditCategoriaCommand request)
         {
-            var response = await Mediator.Send(request);
-            return response;
+            return await Mediator.Send(request);
         }
     }
 }
