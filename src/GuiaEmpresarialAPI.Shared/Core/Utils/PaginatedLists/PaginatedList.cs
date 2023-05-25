@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GuiaEmpresarialAPI.Shared.Core.Utils.PagedList
+﻿namespace GuiaEmpresarialAPI.Shared.Core.Utils.PagedList
 {
     public class PaginatedList <T> : IPaginatedList<T>
     {
@@ -13,8 +7,6 @@ namespace GuiaEmpresarialAPI.Shared.Core.Utils.PagedList
         public int PageSize { get; set; }
         public int Page { get; set; }
         public T[] Items { get; set; }
-
-        public PaginatedList() => Items = Array.Empty<T>();
 
         public PaginatedList(T[] items, int totalCount, int page, int pageSize)
         {

@@ -8,9 +8,6 @@ using GuiaEmpresarialAPI.Data.Services;
 using FluentValidation.AspNetCore;
 using MediatR;
 using GuiaEmpresarialAPI.Application.Core.Command;
-using GuiaEmpresarialAPI.Data.Interface;
-using GuiaEmpresarialAPI.Data.Context;
-using System.Reflection;
 using GuiaEmpresarialAPI.Server.Configurations;
 
 namespace GuiaEmpresarialAPI.Server
@@ -42,6 +39,8 @@ namespace GuiaEmpresarialAPI.Server
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GuiaEmpresarialAPI.Server", Version = "v1" });
             });
+
+            services.CheckConnectionDatabase();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
