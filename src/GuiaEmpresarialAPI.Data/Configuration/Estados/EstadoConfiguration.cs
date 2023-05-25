@@ -9,7 +9,6 @@ namespace GuiaEmpresarialAPI.Data.Configuration.Estados
         public void Configure(EntityTypeBuilder<Estado> builder)
         {
             builder.ToTable("Estados");
-            builder.HasKey("Id");
         }
     }
 }

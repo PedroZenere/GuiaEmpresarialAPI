@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GuiaEmpresarialAPI.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20230525183348_AdicionaTabelaEstado")]
+    [Migration("20230525195138_AdicionaTabelaEstado")]
     partial class AdicionaTabelaEstado
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
