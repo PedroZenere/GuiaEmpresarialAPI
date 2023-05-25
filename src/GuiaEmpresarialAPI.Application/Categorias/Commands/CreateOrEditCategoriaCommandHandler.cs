@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GuiaEmpresarialAPI.Data.Interface;
-using GuiaEmpresarialAPI.Domain.Categorias;
+using GuiaEmpresarialAPI.Domain.Categorias.Entities;
 using GuiaEmpresarialAPI.Shared.Categorias.Commands;
 using GuiaEmpresarialAPI.Shared.Categorias.ViewModels;
 using MediatR;

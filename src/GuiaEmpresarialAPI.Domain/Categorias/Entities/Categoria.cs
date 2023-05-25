@@ -1,6 +1,6 @@
 ﻿using GuiaEmpresarialAPI.Domain.Core;
 
-namespace GuiaEmpresarialAPI.Domain.Categorias
+namespace GuiaEmpresarialAPI.Domain.Categorias.Entities
 {
     public class Categoria : EntityBase
     {

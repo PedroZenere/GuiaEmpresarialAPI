@@ -4,14 +4,16 @@ using GuiaEmpresarialAPI.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GuiaEmpresarialAPI.Data.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230525195138_AdicionaTabelaEstado")]
+    partial class AdicionaTabelaEstado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,26 +41,6 @@ namespace GuiaEmpresarialAPI.Data.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("GuiaEmpresarialAPI.Domain.Cidades.Entities.Cidade", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("EstadoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EstadoId");
-
-                    b.ToTable("Cidades");
-                });
-
             modelBuilder.Entity("GuiaEmpresarialAPI.Domain.Estados.Entities.Estado", b =>
                 {
                     b.Property<int>("Id")
@@ -75,22 +57,6 @@ namespace GuiaEmpresarialAPI.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Estados");
-                });
-
-            modelBuilder.Entity("GuiaEmpresarialAPI.Domain.Cidades.Entities.Cidade", b =>
-                {
-                    b.HasOne("GuiaEmpresarialAPI.Domain.Estados.Entities.Estado", "Estados")
-                        .WithMany("Cidades")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Estados");
-                });
-
-            modelBuilder.Entity("GuiaEmpresarialAPI.Domain.Estados.Entities.Estado", b =>
-                {
-                    b.Navigation("Cidades");
                 });
 #pragma warning restore 612, 618
         }
