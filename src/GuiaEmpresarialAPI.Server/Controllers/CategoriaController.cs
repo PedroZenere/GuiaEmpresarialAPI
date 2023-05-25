@@ -14,6 +14,12 @@ namespace GuiaEmpresarialAPI.Server.Controllers
         {
         }
 
+        [HttpGet("{Id}")]
+        public async Task<CategoriaViewModel> BuscaCategoriaById([FromRoute] GetCategoriaByIdQuery query)
+        {
+            return await Mediator.Send(query);
+        }
+
         [HttpGet]
         public async Task<IPaginatedList<CategoriaViewModel>> BuscaCategoriaFiltros([FromQuery] GetCategoriaByFilterQuery query)
         {
