@@ -44,6 +44,15 @@ namespace GuiaEmpresarialAPI.Data.Services
                 throw new Exception("Could not connect to database.");
             }
         }
+
+        public static void RunMigrations(this IServiceCollection services)
+        {
+            var serviceProvider = services.BuildServiceProvider();
+            using (var db = serviceProvider.GetRequiredService<ApplicationContext>())
+            {
+                db.Database.Migrate();
+            }
+        }
     }
 }
 

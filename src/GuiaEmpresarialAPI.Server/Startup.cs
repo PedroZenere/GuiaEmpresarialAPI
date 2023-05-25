@@ -41,6 +41,7 @@ namespace GuiaEmpresarialAPI.Server
             });
 
             services.CheckConnectionDatabase();
+            services.RunMigrations();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
