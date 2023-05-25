@@ -1,4 +1,4 @@
-﻿using GuiaEmpresarialAPI.Domain.Categorias;
+﻿using GuiaEmpresarialAPI.Domain.Categorias.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GuiaEmpresarialAPI.Data.Context
