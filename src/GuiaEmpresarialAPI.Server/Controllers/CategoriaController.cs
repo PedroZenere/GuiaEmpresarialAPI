@@ -31,5 +31,18 @@ namespace GuiaEmpresarialAPI.Server.Controllers
         {
             return await Mediator.Send(request);
         }
+
+        [HttpPut]
+        public async Task<CategoriaViewModel> AtualizarCategoria([FromBody] CreateOrEditCategoriaCommand request)
+        {
+            return await Mediator.Send(request);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<Unit> RemoverCategoriaById([FromRoute] RemoveCategoriaCommand request)
+        {
+            return await Mediator.Send(request);
+        }
+
     }
 }
