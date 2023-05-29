@@ -9,6 +9,7 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using GuiaEmpresarialAPI.Application.Core.Command;
 using GuiaEmpresarialAPI.Server.Configurations;
+using GuiaEmpresarialAPI.Application.Core.Services;
 
 namespace GuiaEmpresarialAPI.Server
 {
@@ -42,6 +43,8 @@ namespace GuiaEmpresarialAPI.Server
 
             services.CheckConnectionDatabase();
             services.RunMigrations();
+
+            services.ConfigurationHandlerServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

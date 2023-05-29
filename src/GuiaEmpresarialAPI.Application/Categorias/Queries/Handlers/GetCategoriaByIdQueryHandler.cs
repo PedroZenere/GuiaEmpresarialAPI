@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GuiaEmpresarialAPI.Application.Categorias.Queries.Services;
 using GuiaEmpresarialAPI.Data.Interface;
 using GuiaEmpresarialAPI.Shared.Categorias.Queries;
 using GuiaEmpresarialAPI.Shared.Categorias.ViewModels;
@@ -7,23 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GuiaEmpresarialAPI.Application.Categorias.Queries
+namespace GuiaEmpresarialAPI.Application.Categorias.Queries.Handlers
 {
     public class GetCategoriaByIdQueryHandler : IRequestHandler<GetCategoriaByIdQuery, CategoriaViewModel>
     {
-        protected readonly IApplicationContext _appContext;
-        protected readonly IMapper _mapper;
+        protected readonly ICategoriaQueriesServices services;
 
-        public GetCategoriaByIdQueryHandler(IApplicationContext appContext, IMapper mapper)
+        public GetCategoriaByIdQueryHandler(ICategoriaQueriesServices services)
         {
-            _appContext = appContext;
-            _mapper= mapper;
+            this.services = services;
         }
         public async Task<CategoriaViewModel> Handle(GetCategoriaByIdQuery request, CancellationToken cancellationToken)
         {
-            var query = await _appContext.Categorias.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
-
-            return _mapper.Map<CategoriaViewModel>(query);
+            return await services.BuscarPorId(request.Id, cancellationToken);
         }
     }
 }
