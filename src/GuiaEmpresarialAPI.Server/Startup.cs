@@ -7,9 +7,9 @@ using Microsoft.OpenApi.Models;
 using GuiaEmpresarialAPI.Data.Services;
 using FluentValidation.AspNetCore;
 using MediatR;
-using GuiaEmpresarialAPI.Application.Core.Command;
 using GuiaEmpresarialAPI.Server.Configurations;
 using GuiaEmpresarialAPI.Application.Core.Services;
+using System;
 
 namespace GuiaEmpresarialAPI.Server
 {
@@ -30,8 +30,8 @@ namespace GuiaEmpresarialAPI.Server
 
             services.RegisterServicesConfiguration();
 
-            services.AddMediatR(typeof(CreateCommandHandlerBase<,,>).Assembly);
-            services.AddAutoMapper(typeof(CreateCommandHandlerBase<,,>).Assembly);
+            services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers()
                     .AddFluentValidation(fvc =>
