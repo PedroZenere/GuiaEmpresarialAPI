@@ -11,6 +11,6 @@ namespace GuiaEmpresarialAPI.Data.Interface
     public partial interface IApplicationContext
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
+        //Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
