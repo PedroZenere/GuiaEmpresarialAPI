@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System;
 
-namespace GuiaEmpresarialAPI.Shared.Core.Queries
+namespace GuiaEmpresarialAPI.Application.Core.Queries
 {
     public abstract class GetByIdQueryBase<TViewModel> : IRequest<TViewModel>
     {

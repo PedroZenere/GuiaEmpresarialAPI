@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-namespace GuiaEmpresarialAPI.Shared.Categorias.Commands
+namespace GuiaEmpresarialAPI.Application.Categorias.Commands.CreateCategoria
 {
-    public class CreateOrEditCategoriaCommandValidator : AbstractValidator<CreateOrEditCategoriaCommand>
+    public class CreateOrEditCategoriaCommandValidator : AbstractValidator<CreateCategoriaCommand>
     {
         public CreateOrEditCategoriaCommandValidator() 
         {

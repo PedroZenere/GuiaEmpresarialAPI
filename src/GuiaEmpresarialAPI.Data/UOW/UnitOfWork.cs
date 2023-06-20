@@ -1,6 +1,4 @@
 ﻿using GuiaEmpresarialAPI.Data.Context;
-using GuiaEmpresarialAPI.Data.Interface;
-using Microsoft.EntityFrameworkCore;
 using System.Threading;
 using System.Threading.Tasks;
 

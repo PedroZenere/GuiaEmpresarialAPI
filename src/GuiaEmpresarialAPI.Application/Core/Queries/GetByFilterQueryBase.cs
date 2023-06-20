@@ -1,7 +1,6 @@
-﻿using MediatR;
-using System;
+﻿using System;
 
-namespace GuiaEmpresarialAPI.Shared.Core.Queries
+namespace GuiaEmpresarialAPI.Application.Core.Queries
 {
     public abstract class GetByFilterQueryBase
     {

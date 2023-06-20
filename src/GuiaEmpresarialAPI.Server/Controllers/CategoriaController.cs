@@ -1,5 +1,7 @@
-﻿using GuiaEmpresarialAPI.Shared.Categorias.Commands;
-using GuiaEmpresarialAPI.Shared.Categorias.Queries;
+﻿using GuiaEmpresarialAPI.Application.Categorias.Commands.CreateCategoria;
+using GuiaEmpresarialAPI.Application.Categorias.Commands.RemoveCategoria;
+using GuiaEmpresarialAPI.Application.Categorias.Queries.GetCategoriaByFilter;
+using GuiaEmpresarialAPI.Application.Categorias.Queries.GetCategoriaById;
 using GuiaEmpresarialAPI.Shared.Categorias.ViewModels;
 using GuiaEmpresarialAPI.Shared.Core.Utils.PagedList;
 using MediatR;
@@ -27,16 +29,16 @@ namespace GuiaEmpresarialAPI.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<CategoriaViewModel> CriaCategoria([FromBody] CreateOrEditCategoriaCommand request)
+        public async Task<CategoriaViewModel> CriaCategoria([FromBody] CreateCategoriaCommand request)
         {
             return await Mediator.Send(request);
         }
 
-        [HttpPut]
-        public async Task<CategoriaViewModel> AtualizarCategoria([FromBody] CreateOrEditCategoriaCommand request)
-        {
-            return await Mediator.Send(request);
-        }
+        //[HttpPut]
+        //public async Task<CategoriaViewModel> AtualizarCategoria([FromBody] CreateOrEditCategoriaCommand request)
+        //{
+        //    return await Mediator.Send(request);
+        //}
 
         [HttpDelete("{Id}")]
         public async Task<Unit> RemoverCategoriaById([FromRoute] RemoveCategoriaCommand request)

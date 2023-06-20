@@ -8,7 +8,6 @@ using GuiaEmpresarialAPI.Data.Services;
 using FluentValidation.AspNetCore;
 using MediatR;
 using GuiaEmpresarialAPI.Server.Configurations;
-using GuiaEmpresarialAPI.Application.Core.Services;
 using System;
 
 namespace GuiaEmpresarialAPI.Server
@@ -31,6 +30,9 @@ namespace GuiaEmpresarialAPI.Server
             services.RegisterServicesConfiguration();
 
             services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+            //services.AddTransient<Mediator>();
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+            //services.AddMediatR(typeof(Startup));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers()
@@ -43,8 +45,6 @@ namespace GuiaEmpresarialAPI.Server
 
             services.CheckConnectionDatabase();
             services.RunMigrations();
-
-            services.ConfigurationHandlerServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

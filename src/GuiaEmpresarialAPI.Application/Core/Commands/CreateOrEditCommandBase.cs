@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GuiaEmpresarialAPI.Shared.Core.Commands
+namespace GuiaEmpresarialAPI.Application.Core.Commands
 {
     public abstract class CreateOrEditCommandBase
     {

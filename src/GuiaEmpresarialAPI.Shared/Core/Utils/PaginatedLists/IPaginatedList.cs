@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GuiaEmpresarialAPI.Shared.Core.Utils.PagedList
+﻿namespace GuiaEmpresarialAPI.Shared.Core.Utils.PagedList
 {
     public interface IPaginatedList<out T>
     {

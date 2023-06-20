@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using GuiaEmpresarialAPI.Domain.Categorias.Entities;
-using GuiaEmpresarialAPI.Shared.Categorias.Commands;
+using GuiaEmpresarialAPI.Application.Categorias.Commands.CreateCategoria;
 using GuiaEmpresarialAPI.Shared.Categorias.ViewModels;
 
 namespace GuiaEmpresarialAPI.Application.Categorias.AutoMapperProfiles
@@ -9,7 +9,7 @@ namespace GuiaEmpresarialAPI.Application.Categorias.AutoMapperProfiles
     {
         public CategoriaProfile() 
         {
-            CreateMap<CreateOrEditCategoriaCommand, Categoria>();
+            CreateMap<CreateCategoriaCommand, Categoria>();
             CreateMap<Categoria, CategoriaViewModel>();
         }
     }
