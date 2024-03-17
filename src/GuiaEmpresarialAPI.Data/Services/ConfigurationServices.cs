@@ -39,6 +39,7 @@ namespace GuiaEmpresarialAPI.Data.Services
                 if (db.Database.CanConnect())
                 { //CanConnect can be exposed in most classes inheriting DbContext
                     Console.WriteLine("Connection successful.");
+                    db.Database.EnsureCreated();
                     return;
                 }
                 throw new Exception("Could not connect to database.");

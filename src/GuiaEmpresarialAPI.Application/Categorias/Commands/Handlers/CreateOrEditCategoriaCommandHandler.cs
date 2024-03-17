@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using GuiaEmpresarialAPI.Application.Categorias.Commands.Services;
+using GuiaEmpresarialAPI.Data.Context;
 using GuiaEmpresarialAPI.Data.Interface;
 using GuiaEmpresarialAPI.Domain.Categorias.Entities;
 using GuiaEmpresarialAPI.Shared.Categorias.Commands;
 using GuiaEmpresarialAPI.Shared.Categorias.ViewModels;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,20 +13,29 @@ namespace GuiaEmpresarialAPI.Application.Categorias.Commands.Handlers
 {
     public class CreateOrEditCategoriaCommandHandler : IRequestHandler<CreateOrEditCategoriaCommand, CategoriaViewModel>
     {
-        private readonly ICategoriaCommandServices services;
+        protected readonly IApplicationContext _appContext;
+        protected readonly IUnitOfWork _uow;
+        protected readonly IMapper _mapper;
 
-        public CreateOrEditCategoriaCommandHandler(ICategoriaCommandServices services)
+        public CreateOrEditCategoriaCommandHandler(IApplicationContext appContext, IUnitOfWork uow, IMapper mapper)
         {
-            this.services = services;
+            _appContext = appContext;
+            _uow = uow;
+            _mapper = mapper;
         }
-        
+
         public async
             Task<CategoriaViewModel> Handle(CreateOrEditCategoriaCommand request, CancellationToken cancellationToken)
         {
-            if (request.Id.HasValue)
-                return await services.Atualizar(request, cancellationToken);
+            var entity = _mapper.Map<Categoria>(request);
 
-            return await services.Criar(request, cancellationToken);
+            var response = request.Id.HasValue ?
+                _appContext.Categorias.Update(entity) : 
+                await _appContext.Categorias.AddAsync(entity, cancellationToken);
+
+            await _uow.SaveChangesAsync(cancellationToken);
+
+            return _mapper.Map<CategoriaViewModel>(response.Entity);
         }
     }
 }
