@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GuiaEmpresarialAPI.Data.Services;
-using FluentValidation.AspNetCore;
 using GuiaEmpresarialAPI.Application.Core.Configuration;
 using GuiaEmpresarialAPI.Server.Configurations;
 
@@ -31,9 +30,9 @@ namespace GuiaEmpresarialAPI.Server
             services.AddServiceMediator();
             services.AddServiceAutoMapper();
 
-            services.AddControllers()
-                    .AddFluentValidation(fvc =>
-                            fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+            services.AddControllers();
+                    //.AddFluentValidation(fvc =>
+                    //        fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GuiaEmpresarialAPI.Server", Version = "v1" });
@@ -53,7 +52,7 @@ namespace GuiaEmpresarialAPI.Server
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GuiaEmpresarialAPI.Server v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
