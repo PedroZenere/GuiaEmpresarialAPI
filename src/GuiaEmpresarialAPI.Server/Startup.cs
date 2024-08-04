@@ -3,9 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
-using GuiaEmpresarialAPI.Data.Services;
-using GuiaEmpresarialAPI.Application.Core.Configuration;
 using GuiaEmpresarialAPI.Server.Configurations;
 
 namespace GuiaEmpresarialAPI.Server
@@ -22,24 +19,8 @@ namespace GuiaEmpresarialAPI.Server
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Configurando SQLServer
-            services.ConfigureMainDatabase(Configuration);
-
-            services.RegisterServicesConfiguration();
-
-            services.AddServiceMediator();
-            services.AddServiceAutoMapper();
-
-            services.AddControllers();
-                    //.AddFluentValidation(fvc =>
-                    //        fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "GuiaEmpresarialAPI.Server", Version = "v1" });
-            });
-
-            services.CheckConnectionDatabase();
-            services.RunMigrations();
+            services
+                .InstallServices(Configuration, typeof(IServiceInstaller).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

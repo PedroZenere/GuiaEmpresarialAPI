@@ -1,16 +1,36 @@
-﻿using GuiaEmpresarialAPI.Data.Context;
-using GuiaEmpresarialAPI.Data.Interface;
-using GuiaEmpresarialAPI.Data.UOW;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace GuiaEmpresarialAPI.Server.Configurations
 {
     public static class DependencyInjections
     {
-        public static void RegisterServicesConfiguration(this IServiceCollection services)
+        public static IServiceCollection InstallServices(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            params Assembly[] assemblies)
         {
-            services.AddScoped<IApplicationContext, ApplicationContext>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            IEnumerable<IServiceInstaller> serviceInstallers = assemblies
+                .SelectMany(a => a.DefinedTypes)
+                .Where(IsAssignableToType<IServiceInstaller>)
+                .Select(Activator.CreateInstance)
+                .Cast<IServiceInstaller>();
+
+            foreach (IServiceInstaller serviceInstaller in serviceInstallers)
+            {
+                serviceInstaller.Install(services, configuration);
+            }
+
+            return services;
+
+            static bool IsAssignableToType<T>(TypeInfo typeInfo) =>
+                typeof(T).IsAssignableFrom(typeInfo) &&
+                !typeInfo.IsInterface &&
+                !typeInfo.IsAbstract;
         }
     }
-}
+} 

@@ -1,4 +1,6 @@
 ﻿using GuiaEmpresarialAPI.Data.Context;
+using GuiaEmpresarialAPI.Data.Interface;
+using GuiaEmpresarialAPI.Data.UOW;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -6,12 +8,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace GuiaEmpresarialAPI.Data.Services
+namespace GuiaEmpresarialAPI.Server.Configurations
 {
-    public static class ConfigurationServices
+    public class InfrastructureServiceInstaller : IServiceInstaller
     {
-        public static void ConfigureMainDatabase(this IServiceCollection services, IConfiguration configuration)
+        public void Install(IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<IApplicationContext, ApplicationContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddDbContextPool<ApplicationContext>(options =>
             {
                 string? connectionString = configuration.GetConnectionString("DefaultConnection");
@@ -30,8 +35,12 @@ namespace GuiaEmpresarialAPI.Data.Services
                     .EnableDetailedErrors()
                     .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }));
             });
+
+            CheckConnectionDatabase(services);
+            RunMigrations(services);
         }
-        public static void CheckConnectionDatabase(this IServiceCollection services)
+
+        public static void CheckConnectionDatabase(IServiceCollection services)
         {
             var serviceProvider = services.BuildServiceProvider();
             using (var db = serviceProvider.GetRequiredService<ApplicationContext>())
@@ -46,7 +55,7 @@ namespace GuiaEmpresarialAPI.Data.Services
             }
         }
 
-        public static void RunMigrations(this IServiceCollection services)
+        public static void RunMigrations(IServiceCollection services)
         {
             var serviceProvider = services.BuildServiceProvider();
             using (var db = serviceProvider.GetRequiredService<ApplicationContext>())
@@ -56,4 +65,3 @@ namespace GuiaEmpresarialAPI.Data.Services
         }
     }
 }
-
